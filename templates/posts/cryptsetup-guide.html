@@ -1,0 +1,40 @@
+{%extends 'base-blog.html'%}
+
+{%block description%}A quick reference guide on how to use cryptsetup.{%endblock%}
+{%block keywords%}luks, cryptsetup, guide{%endblock%}
+{%block title%}Guide on cryptsetup{%endblock%}
+
+{%block body%}
+<h1>Quick Walkthrough of Cryptsetup</h1>
+<p>Just a quick guide on how to use "cryptsetup" for creating LUKS containers and encrypted devices</p>
+<hr>
+<p><b>Creating a container:</b> You need a file that you can use as a container. I just use
+    <code>fallocate -l $SIZE $OUTPUT</code> (change $SIZE to the size you wish to use, such as 10G for 10gb and $OUTPUT
+    to the output file name you wish). Then, <code>cryptsetup luksFormat $OUTPUT</code>. If you wish to use a keyfile,
+    you can do <code>cryptsetup luksAddKey $OUTPUT $KEYFILE</code> ($KEYFILE being the keyfile you wish to use <a
+        href="#f1">[1]</a>) after you have created your LUKS container
+<p><b>Opening a container:</b> In order to mount the container, you have to format it with a file system (only once,
+    then you can just mount the file), which I will use BTRFS right now. <code>cryptsetup open $OUTPUT $TEMP</code>
+    ($TEMP being a temporary name, does not matter what you use), then <code>mkfs.btrfs /dev/mapper/$TEMP</code>. Then
+    you can <code>sudo mount /dev/mapper/$TEMP /path/to/mountpoint</code> (mountpoint should be empty, just create a
+    directory with <code>mkdir mountpoint</code>). If you get errors saying permission denied when you interact with it,
+    <code>sudo chown -R $USER:$GROUP /path/to/mountpoint</code> ($USER and $GROUP are usually the same, which would be
+    your username)</p>
+<p><b>Closing a container:</b> <code>sudo umount /path/to/mountpoint</code> and then
+    <code>sudo cryptsetup close $TEMP</code>.</p>
+<h2><em>Full Disk Encryption on Devices</em></h2>
+<p>To encrypt a device, it is the same as above but instead of generating a file with <code>fallocate</code>, your file
+    will be in <code>/dev/</code>. You can do <code>lsblk</code> (if it shows as "sda", your device file will be in
+    /dev/sda and so on) to see which one is the one you wish to encrypt. Make sure to use another file system if you
+    wish.</p>
+<hr>
+<h3>Is this it?</h3>
+<p>No. Cryptsetup is much more flexible than that, but this is all you would probably need if you wish to get started
+    <br><br><strong><em>PS: This post will be updated later on</em></strong></p>
+<hr>
+<h2 data-no-increment>Footnotes:</h2>
+<p id="f1">[1] A secure way to generate a keyfile would be with
+    <code>dd if=/dev/urandom of=$KEYFILE bs=32 count=1</code>, which will generate a 32 byte keyfile with random data
+    which provides you 256 bits of security, but you can increase the block size (bs) or the count if you wish to have
+    longer keyfiles with more bits for better security.</p>
+{%endblock%}

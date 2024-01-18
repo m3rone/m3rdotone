@@ -1,0 +1,10 @@
+services:
+  website:
+    image: "ghcr.io/m3rone/m3r_site:latest"
+    ports:
+      - "6767:6767"
+    networks:
+      - m3r
+
+networks:
+  m3r:

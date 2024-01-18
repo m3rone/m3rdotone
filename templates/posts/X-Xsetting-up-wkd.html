@@ -1,0 +1,17 @@
+{%extends 'base-blog.html'%}
+
+{%block description%}A short guide and knowledge base for setting up WKD{%endblock%}
+{%block keywords%}wkd, setting up wkd, web key directory{%endblock%}
+{%block title%}Setting up WKD{%endblock%}
+
+{%block body%}
+<h1>Setting up WKD</h1>
+<p>There are not a lot of guides and knowledge bases for WKD, so I decided to write what I learned while setting it up. I will be using <code>m3r.one</code> as an example domain, but you should use yours.</p>
+<hr>
+<h2>What is WKD?</h2>
+<p>To start from be beginning, WKD is a way for email clients or tools such as GPG to retrieve public keys with associated email addresses.</p>
+<h2>Setting up WKD</h2>
+<p>There are 2 methods with fetching/setting up from WKD: advanced and direct. When fetching, clients first must look at the advanced method URL's and then they should look at the direct method. However, sometimes clients may not adhere to the standards, so we'll go over setting up both of these methods. Both of these methods require an empty file called <code>policy</code> to reside in a directory.</p>
+<h4>Advanced Method</h4>
+<p>For the advanced method, there first has to be a subdomain called <code>openpgpkey</code>, so this method requires access to editing DNS records a domain.</p>
+{%endblock%}

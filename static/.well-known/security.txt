@@ -1,0 +1,16 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: mailto:reports@m3r.one
+Expires: 2024-05-01T20:59:00.000Z
+Encryption: https://m3r.one/reports-key.txt
+Preferred-Languages: en
+Canonical: https://m3r.one/.well-known/security.txt
+Canonical: https://m3r.one/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iIYEARYIAC4WIQRhGRgglXRx7vIoxDdI+j21G21ydgUCZJBg2RAccmVwb3J0c0Bt
+M3Iub25lAAoJEEj6PbUbbXJ2t4QA/i1e57yg1c2r4YPnGvtHvbb3pRNkOHjpkv19
+gbNLIOJVAP9ZWrFxWVaRKKJ1sFLWT1kG672bjwHTvU3/wQCE4WPwDw==
+=4D6d
+-----END PGP SIGNATURE-----

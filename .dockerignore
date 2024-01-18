@@ -1,0 +1,6 @@
+venv/
+venv_dev/
+__pycache__/
+.vscode
+static/scss
+.git

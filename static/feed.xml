@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>m3r's Blog</title>
+  <link>https://m3r.one/</link>
+  <description>Just blog posts or other things</description>
+  <item>
+    <title>Updates To the Site</title>
+    <link>https://m3r.one/posts/updates-to-come</link>
+    <description>Some of the updates to the site I planned over the year of not posting.</description>
+    <guid>https://m3r.one/posts/updates-to-come</guid>
+    <pubDate>Fri, 08 Jul 2022 03:40:00 +0300</pubDate>
+  </item>
+  <item>
+    <title>Quick Reference Guide for cryptsetup</title>
+    <link>https://m3r.one/posts/cryptsetup-guide</link>
+    <description>Just a quick guide on how to use "cryptsetup" for creating LUKS containers and encrypted devices</description>
+    <guid>https://m3r.one/posts/cryptsetup_G</guid>
+    <pubDate>Sun, 27 Jun 2021 22:00:00 +0300</pubDate>
+  </item>
+  <item>
+    <title>Actually Easy Borg Backup Guide</title>
+    <link>https://m3r.one/posts/borgbackup-guide</link>
+    <description>All the guides and documentations I saw online were very confusing to the new user so I decided to write a real quick starters guide.</description>
+    <guid>https://m3r.one/posts/Borg_Backup_G</guid>
+    <pubDate>Tue, 29 Apr 2021 01:16:34 +0300</pubDate>
+  </item>
+  <item>
+    <title>Are VPN's Useful?</title>
+    <link>https://m3r.one/posts/are-vpns-useful</link>
+    <description>In theory, depends on what your goals are. Are they useful for what they are advertised for? Are they useful when you self host? I'll go over what I think are the most relevant points are to this.</description>
+    <guid>https://m3r.one/posts/Are_VPNs_useful</guid>
+    <pubDate>Fri, 16 Apr 2021 22:35:44 +0300</pubDate>
+  </item>
+  <item>
+    <title>How To Sign Your Git Commits</title>
+    <link>https://m3r.one/posts/signing-commits</link>  
+    <description>Most guides online I found are hard and kinda confusing, so here is a very short and a clear guide on how to set up Git and sign commits.</description>
+    <guid>https://m3r.one/posts/Signing_Commits</guid>
+    <pubDate>Fri, 16 Apr 2021 13:51:42 +0300</pubDate>
+  </item>
+  <item>
+    <title>How to get your PPPoE Password</title>
+    <link>https://m3r.one/posts/get-pppoe-password</link>
+    <description>Sometimes your ISP doesn't want to give you your PPPoE password, so I decided to write a very short guide on how to do it.</description>
+    <guid>https://m3r.one/posts/Get_PPPoE_password</guid>
+    <pubDate>Thu, 08 Apr 2021 20:45:50 +0300</pubDate>
+  </item>
+</channel>
+
+</rss>

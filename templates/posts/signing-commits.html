@@ -1,0 +1,39 @@
+{%extends 'base-blog.html'%}
+
+{%block description%}A short and easy guide about how to sign your Git commits.{%endblock%}
+{%block keywords%}git, pgp, gpg, sign{%endblock%}
+{%block title%}How to sign your commits{%endblock%}
+
+{%block body%}
+    <h1>10 Millionth Guide On How To Sign Commits</h1>
+    <p>Most guides online I found are hard and kinda confusing, so here is a very short and a clear guide on how to set up Git and sign commits.</p>
+    <p>Linux: Have your PGP keys ready. They should have the same email address with the service you're trying to push commits to (e.g. GitHub, Codeberg, etc.)</p>
+            <ol>
+                <li>If you don't have a PGP key, you can generate one (I recommend ed25519 instead of RSA) with <code><b>gpg --full-generate-key --expert</b></code> (at your terminal), select <code><b>(9) ECC and ECC</b></code>, <code><b>(1) Curve 25519</b></code>, enter the expiration date of that key (you can leave it at <code><b>0</b></code>), enter your name and email (email must be the same with the service you have signed up to).</li>
+                <li>Do <code><b>gpg --list-keys</b></code> and copy that long number that is above your name and email and under <code><b>ed25519 $DATE</b></code> (which will be your key ID).</li>
+            </ol>
+
+
+            <h2>Set up your <code><b>.gitconfig</b></code>.</h2>
+            <ol>
+                <li>If you haven't set it up before, <code><b>git config --global user.name &quot;foobar&quot;</b></code> and <code><b>git config --global user.email &quot;foo@bar.com&quot;</b></code> (change the foobar to your name and email that you used in your PGP key) and <code><b>git config --global user.signingkey foobar</b></code> and paste that long number you copied in step 1.2 instead of foobar. You can also add <code><b>git config --global commit.gpgsign true</b></code> if you want to sign them by default instead of adding <code><b>-s</b></code> every time you commit.</li>
+                <li>If you have set it up before, use your text editor to edit <code><b>.gitconfig</b></code> and change the values to the PGP key (name, email, key ID) you created or had before.</li>
+            </ol>
+
+
+            <h2>Enter your public key to the service you are using.</h2>
+            <ol>
+                <li>Do <code><b>gpg --export --armor</b></code> which will print the armored version of your public key. Copy that and go to your account settings, PGP/SSH keys (names can vary), and paste that text that got exported. <strong>If your email was different than the one your PGP key has, it will give you an error saying that this account doesn't have an email connected to it which your PGP key has. You can either:</strong>
+                    <ol>
+                        <li>Add that email address as a secondary/primary email address to your online account.</li>
+                        <li>Do <code><b>gpg --edit-key foobar</b></code> (where foobar is your key ID), type <code><b>adduid</b></code> and enter new details (these will not override the old ones, but they will add a new name and email to the existing details).</li>
+                        <li>Delete the old one with <code><b>gpg --delete-secret-keys $Your_key_name</b></code> and create a new key.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <p>You should be ready now. Just do your regular commits, and it should ask for your PGP key password, and it should show your commits as signed.</p>
+
+    <h2>BONUS</h2>
+    <p>If you use VSCode or VSCodium, you can go to the settings, type <code><b>gpg</b></code> at the settings filter and enable <code><b>Git: Enable Commit Signing</b></code>.</p>
+{%endblock%}

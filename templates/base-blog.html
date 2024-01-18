@@ -1,0 +1,34 @@
+{%extends 'jinja-root.html'%}
+
+{% block all %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="m3r">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="{%block description%}{%endblock%}">
+        <meta name="keywords" content="{%block keywords%}{%endblock%}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+        <link rel="shortcut icon" href="/static/media/favicon.webp" type="image/x-icon">
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/posts.css">
+        {%block head%}{%endblock%}
+        <title>{%block title%}{%endblock%} | m3r</title>
+    </head>
+    <body>
+        <nav class="navlinks">
+                <a href="/">Homepage</a>
+                <a href="/select">Back to list</a>
+            </nav>
+            <main>
+                <article class="article">
+                {%block body%}
+                {%endblock%}
+            </article>
+        </main>
+        <!-- <footer class="indexfooter"><a href="/privacy">Privacy Policy</a> <a href="/disclaimer">Disclaimer</a> <a href="/contact">Contact</a></footer> -->
+    </body>
+</html>
+{% endblock %}

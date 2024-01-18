@@ -1,0 +1,18 @@
+{# Jinja specific macros and all go here so that they are available from the entire site as all parent templates inherit from here #}
+
+{% macro linkwitharchive(link, archivelink, linktext = link, archivetext = "") %}
+<a href="{{ link }}">
+    {{ linktext }}
+</a>
+<sup>
+    <a href="{{ archivelink }}">
+        <img height="15" width="15" src="/static/icons/internetarchive.svg" class="internetarchive-icon" title="internet archive link" alt="internet archive link">
+        {{ archivetext }}
+    </a>
+</sup>
+{%- endmacro %}
+
+{# END OF MACROS, after that its just the inheriting stuff #}
+{% block all %}
+
+{% endblock %}

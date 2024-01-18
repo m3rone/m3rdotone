@@ -1,0 +1,90 @@
+{%extends 'base-blog.html'%}
+
+    {%block description%}I explained VPN's usefulness (and mostly uselessness) in this blog post.{%endblock%}
+    {%block keywords%}vpn, useless, breakdown{%endblock%}
+    {%block title%}Are VPN's Useful?{%endblock%}
+
+{%block body%}
+    <h1>Are VPN's really useful?</h1>
+    <p>In theory, depends on what your goals are. Are they useful for what they are advertised for? Are they useful when
+        you self-host? I'll go over what I think are the most relevant points are to this.</p>
+    <hr>
+    <h2><em>Privacy</em></h2>
+    <p>No. A VPN does not increase your privacy as they have the same amount of power that your ISP would, and you have
+        to remember that a VPN provider also has an ISP. </p>
+    <p><strong>Do you have to use a VPN in public Wi-Fi's?</strong> No. You can be <em>almost</em> anonymous with public
+        Wi-Fi's considering you spoof your MAC address and your hostname. A VPN would do even more harm to your privacy
+        in situations like where an ISP doesn't know you (a public Wi-Fi). With a VPN, you will be adding a party that
+        knows who you are to a system where an ISP doesn't know you. If you use the same VPN account across all public
+        Wi-Fi networks, you would be centralizing your data instead of spreading it into systems where the ISP doesn't
+        know who you are.</p>
+    <p><strong>But my VPN says they do not log</strong>. Yes, they <em>say</em> they don't. You have no way of verifying
+        it and there have been instances where VPN companies have sold data / shared logs but still retain their
+        business (<a
+            href="https://web.archive.org/web/20210506024401/https://www.theregister.com/2011/09/26/hidemyass_lulzsec_controversy//">1</a>,
+        <a
+            href="https://web.archive.org/web/20210616040125/https://torrentfreak.com/ipvanish-no-logging-vpn-led-homeland-security-to-comcast-user-180505//">2</a>,
+        <a
+            href="https://web.archive.org/web/20210616183035/https://www.bleepingcomputer.com/news/security/cyberstalking-suspect-arrested-after-vpn-providers-shared-logs-with-the-fbi//">3</a>,
+        <a
+            href="https://web.archive.org/web/20180405011803/www.wipeyourdata.com/other-data-erasing/no-logs-earthvpn-user-arrested-after-police-finds-logs">4</a>).
+        A general rule of thumb is to never trust a server, which is an entity that you can not control. <a
+            href="https://en.wikipedia.org/wiki/Zero_trust_security_model">The zero trust</a> model is when you do not
+        trust a server for security and privacy and is a good example that a VPN that uses OpenVPN or Wireguard
+        protocols can not accomplish (I do not know any other protocols that are audited and widely used, so I mentioned
+        both of the most popular ones).</p>
+    <p><strong>But I paid anonymously</strong>. You might've paid anonymously, but you still use your own IP address,
+        and they can log that, combined with the websites you visit, spooky stuff that your VPN client might do, and a
+        bunch of other info, you aren't in any gains by paying anonymously.</p>
+    <p><strong>What about my IP address?</strong> An IP address is supposed to be public, so hiding it means you need
+        anonymity, which I will talk at the end. If you are afraid that someone will "DDoS" you, you should not port
+        forward and some OS's by default do not even respond to pings, so you won't be able to even get pinged. If your
+        OS responds to ping requests (which you can disable), there is only so much that they can do.</p>
+    <hr>
+    <h2><em>Security</em></h2>
+    <p>I'd like to call this military grade <em>deception</em>. With a VPN's encryption, your traffic is only encrypted
+        during transit, and not at rest (meaning that your VPN decrypts their own encryption). This is oddly familiar to
+        something else, which is HTTPS.</p>
+    <p><strong>But I don't want someone hacking my traffic</strong>. If you use HTTPS, only you and the server and the
+        website can see your data. In the case of you not using HTTPS, a VPN is as dangerous as an untrusted network,
+        because you do not know who is on your VPN's network and if they MITM you. If you <em>absolutely</em> have to
+        establish unencrypted connections such as HTTP, it's best to go to a trusted network such as your home (you have
+        to know that your ISP still can MITM you, and if you were to use a VPN, now 2 companies can MITM you).</p>
+    <hr>
+    <h2><em>Anonymity</em></h2>
+    <p>A VPN does not provide anonymity. They are a completely trust-based system that can leak at any time and knows
+        what you do and who you are. You should use <a href="https://torproject.org">Tor browser</a> or an OS that is
+        built for anonymity such as <a href="https://tails.boum.org">Tails OS</a> or <a
+            href="https://whonix.org">Whonix</a>.</p>
+    <hr>
+    <h2><em>Real Use Cases</em></h2>
+    <p>A VPN is useful for streaming region blocked content and torrenting (although <a
+            href="https://en.wikipedia.org/wiki/Seedbox">seedboxes</a> do a better job at torrenting).</p>
+    <hr>
+    <h2><strong>MISC</strong></h2>
+    <p>Tor and VPN's combined - Do not do that. That is not how Tor was designed to be used, and you should be using <a
+            href="https://bridges.torproject.org">Tor bridges</a>. You might also want to read <a
+            href="https://gitlab.torproject.org/legacy/trac/-/wikis/doc/TorPlusVPN">Tor Project's take on VPN's +
+            Tor</a>.</p>
+    <p>What if Tor is compromised? - You will have to connect to the compromised entry <em>and</em> exit node, which
+        there are 6000+ nodes in total, so that is pretty unlikely. You also will not connect to the node that is in
+        your country, and you will most likely not have 2 nodes in the same country. You can also change your circuit
+        any time you want. Tor also has cell padding (packets within Tor network) between you and the guard node, so it
+        will take even more time to get you pwned. <a
+            href="https://2019.www.torproject.org/docs/tor-manual.html.en#ConnectionPadding">More about cell
+            padding</a>.</p>
+    <p>Self hosting a VPN - That option will decrease your anonymity even more but it is the actual way you should be
+        using a VPN because now you will be able to interact with your devices that are not visible to the internet/are
+        in your LAN, which is what VPN's were made for in the first place</p>
+    <p>More resources to look at:</p>
+    <ul>
+        <li> {{ linkwitharchive(link = 'https://www.ivpn.net/blog/why-you-dont-need-a-vpn/', archivelink = 'https://web.archive.org/web/20210206222030/https://www.ivpn.net/blog/why-you-dont-need-a-vpn/') }} 
+            (although their "Commercial VPNs can be useful if you use them for specific jobs they can help with. These
+            are:" part is a bit misleading too, but that is for business at this point).</li>
+        <li> {{ linkwitharchive(link = 'https://gist.github.com/joepie91/5a9909939e6ce7d09e29', archivelink = 'https://web.archive.org/web/20200502092411/https://gist.github.com/joepie91/5a9909939e6ce7d09e29') }}</li>
+        <li> {{ linkwitharchive(link = 'https://matt.traudt.xyz/posts/you-want-tor-24tFBCJV/', archivelink = 'https://web.archive.org/web/20211121174410/https://matt.traudt.xyz/posts/you-want-tor-24tFBCJV/') }}</li>
+        <li> {{ linkwitharchive(link = 'https://www.youtube.com/watch?v=WVDQEoe6ZWY', archivelink = 'https://web.archive.org/web/20210301104057/https://www.youtube.com/watch?v=WVDQEoe6ZWY') }} </li>
+        <li> {{ linkwitharchive(link = 'https://overengineer.dev/blog/2019/04/08/very-precarious-narrative.html', archivelink = 'https://web.archive.org/web/20220609064735/https://overengineer.dev/blog/2019/04/08/very-precarious-narrative.html') }} </li>
+        <li> {{ linkwitharchive(link = 'https://cyb3rsecurity.tips/p/is-public-wi-fi-dangerous', archivelink = 'https://web.archive.org/web/20220617221434/https://cyb3rsecurity.tips/p/is-public-wi-fi-dangerous') }} </li>
+    </ul>
+{%endblock%}

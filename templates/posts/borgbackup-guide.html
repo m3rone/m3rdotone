@@ -1,0 +1,67 @@
+{%extends 'base-blog.html'%}
+
+{%block description%}A short and easy guide on how to use Borg Backup utility.{%endblock%}
+{%block keywords%}borg, backup, guide{%endblock%}
+{%block title%}Actually Easy Borg Backup Guide{%endblock%}
+
+{%block body%}
+<h1>An Actually Easy Guide To Borg</h1>
+<p>All the guides and documentations I saw online were very confusing to the new user, so I decided to write a real
+    quick starters guide and some other information. Please note that this quick-start guide doesn't go over using Borg
+    with external servers. If you want a guide on how to use Borg with external servers, check <a
+        href="https://borgbackup.readthedocs.io/en/stable/index.html">Borg's documentation</a> on how to run specific
+    commands with 3rd party Borg servers involved.</p>
+<hr>
+<p><h2>To create a repository:</h2> <code>borg init -e $encryption_mode /path/to/repo</code>. Change
+    <code>$encryption_format</code> with whichever encryption mode you'd like <a href="#f1">[1]</a>.</p>
+<p><h2>To create archives:</h2> <code>borg create /path/to/repo::archive_name /path/to/source</code>. Most used flags
+    include "-p" to show progress, "-C compression_algorithm" to compress <a href="#f2">[2]</a>. Borg gives a list of
+    available encryption algorithms when you press tab after typing "-C".</p>
+<p><h2>Dealing with keys:</h2> <code>borg key change-passphrase /path/to/repo</code> to change your repo passphrase,
+    <code>borg key export /path/to/repo /path/to/output</code> to export your key (additional flags include "--paper"
+    for printing and "--qr-html" for qr-scanning or printing), <code>borg key import /path/to/repo /path/to/key</code>
+    to import your key (additional flags include "--paper" to import a file that was exported via the same flag).</p>
+<p><h2>Extracting archives:</h2> <code>borg extract /path/to/repo::archive_name</code> to extract an archive. You also can
+    add a directory of content you want extracted specifically (borg extract /path/to/repo::archive_name
+    /path/to/content). The extraction is done to the same directory as you are, so you should go to the directory you
+    wish to have your archive extracted. If you do <code>borg export-tar /path/to/repo::archive_name</code> it will
+    export that archive as a .tar archive</p>
+<p><h2>Repo management:</h2>
+<ul>
+    <li><code>borg list /path/to/repo::archive_name</code> to list all the items in an archive, or you can omit the
+        "::archive_name" to list all the archives that are in a repo.</li>
+    <li><code>borg delete /path/to/repo::archive_name</code> to delete an archive, or you can delete omit
+        "::archive_name" to delete the whole repo.</p>
+    </li>
+    <li>
+        <p><code>borg prune -$OPTIONS /path/to/repo</code> to prune your repository. Options include:
+        <ul>
+            <li>"--keep-last X" to keep the last X number of archives,</li>
+            <li>"--keep-within Xtime" to keep all archives within X amount of time ("Xh" for hours, "Xd" for days, "Xw"
+                for weeks, "Xm" for months and "Xy" for years),</li>
+        </ul>
+        </p>
+    </li>
+    <li><code>borg mount /path/to/repo::archive_name /path/to/mountpoint</code> to mount an archive to a FUSE
+        filesystem. You can omit "::archive_name" to mount the whole repository. To unmount it,
+        <code>borg umount /path/to/mountpoint</code></li>
+    <li><code>borg upgrade /path/to/repo</code> to upgrade your repository to a new version. I'd recommend <a
+            href="https://borgbackup.readthedocs.io/en/stable/usage/upgrade.html#borg-upgrade">reading the
+            documentation</a> as it is a bit picky thing to run.</li>
+</ul>
+<hr>
+<h3>That's it. This is all you will (probably) need</h3>
+<p>If you need more information, be sure to read <a href="https://borgbackup.readthedocs.io/en/stable/index.html">Borg's
+        own documentation</a> as it has much more flexibility than what I write here as this is supposed to be a starter
+    guide, and not a power-user guide. Be sure to also <a href="https://www.borgbackup.org/support/fund.html">donate to
+        Borg</a> if you want to.</p>
+<hr>
+<h3>Footnotes</h4>
+<p id="f1">[1] <a href="https://borgbackup.readthedocs.io/en/stable/usage/init.html#encryption-modes">Borg wiki about
+        encryption modes</a> but basically "repokey" is when your keyfile is in the repo (encrypted) [in
+    $REPO_DIR/config] so you only need the passphrase but "keyfile" is when the keyfile seperate [in
+    ~/.config/borg/keys/], so you need both your passphrase and your keyfile to access your repo.</p>
+<p id="f2">[2] Compression before encryption is not recommended as it can <a
+        href="https://arxiv.org/pdf/1806.03160v1.pdf"> leak important metadata about the encryption that can be
+        exploited</a>.</p>
+{%endblock%}

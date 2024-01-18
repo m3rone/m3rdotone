@@ -1,0 +1,154 @@
+@use "partials/global-vars" as *;
+
+body {
+    text-align: center;
+}
+
+h1 {
+    line-height: 30px;
+}
+
+.post {
+    margin-top: 10px;
+    color: #8e8d8d;
+}
+
+.directory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 23rem;
+    margin: auto;
+    justify-content: center;
+
+    &__dircard {
+        min-width: 7rem;
+        max-width: fit-content;
+        flex-basis: calc(33.33% - 17rem);
+        position: relative;
+        padding-block: 3rem;
+        transition: all 200ms ease-in-out;
+        color: $clr-text;
+
+        &__text {
+            display: block;
+            font-size: 1.17em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+            // color: $clr-text;
+        }
+
+        &::before {
+            content: ' ';
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            height: 7rem;
+            width: 7rem;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            opacity: 0.05;
+            transition: all 200ms ease-in-out;
+            z-index: -1;
+            border-radius: 25px;
+        }
+
+        &:hover{
+            // z-index: -2;
+            // color: black;
+            color: transparent;
+            &::before {
+                // z-index: 1;
+                opacity: 1;
+            }
+        }
+
+        @mixin dir($img, $shadow){
+            &::before {
+                background-image: url(#{$img});
+            }
+            &:hover::before {
+                 box-shadow: 0px 3px 43px -6px #{$shadow};
+            }
+        }
+
+        &:nth-child(1) { // Codeberg
+            @include dir('/static/media/index/codeberg.webp', #2285d1)
+        }
+
+        &:nth-child(2) { // Blog
+            @include dir('/static/media/index/blog.webp', rgba(255,255,255,1))
+        }
+
+        &:nth-child(3) { // Github
+            @include dir('/static/media/index/github.webp', black)
+        }
+
+        &:nth-child(4) { // Service
+            @include dir('/static/media/index/services.webp', #929292)
+        }
+
+        &:nth-child(5) { // Contact
+            @include dir('/static/media/index/contact.webp', #f44336)
+        }
+
+        &:nth-child(6) { // Donate
+            @include dir('/static/media/index/donate.webp', #f7931a);
+        }
+
+        @if $enable-light {
+            @media (prefers-color-scheme: light) {
+                & {
+                       color: $clr-text-light;
+                }
+                &:nth-child(1) { // Codeberg
+                    @include dir('/static/media/index/codeberg-light.webp', transparent)
+                }
+
+                &:nth-child(2) { // Blog
+                    @include dir('/static/media/index/blog-light.webp', transparent)
+                }
+
+                &:nth-child(3) { // Github
+                    @include dir('/static/media/index/github-light.webp', transparent)
+                }
+
+                &:nth-child(4) { // Service
+                    @include dir('/static/media/index/services-light.webp', transparent)
+                }
+
+                &:nth-child(5) { // Contact
+                    @include dir('/static/media/index/contact-light.webp', transparent)
+                }
+
+                &:nth-child(6) { // Donate
+                    @include dir('/static/media/index/donate-light.webp', transparent)
+                }
+            }
+        }
+    }
+}
+
+.whoami {
+    width: min(78ch, 90%);
+    margin-inline: auto;
+    margin-block: 2rem;
+}
+
+.indexfooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    flex-wrap: wrap;
+}
+
+.postlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

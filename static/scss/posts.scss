@@ -1,0 +1,46 @@
+@use "partials/global-vars" as *;
+
+
+.center {
+    text-align: center;
+}
+
+.breakable {
+    word-break: break-all;
+}
+
+.postselect {
+    max-width: 78ch;
+    margin: auto;
+}
+
+.postlist {
+    display: flex;
+    flex-direction: column;
+}
+
+.article, .navlinks, .mainbody {
+    max-width: 78ch;
+    margin: auto;
+    line-height: 1.5em;
+    scroll-behavior: smooth;
+}
+
+.navlinks {
+    font-weight: 900;
+    display: flex;
+    gap: 2rem;
+}
+
+
+.article {
+    counter-reset: parts;
+
+    h2 {
+        counter-increment: parts;
+
+        &:not([data-no-increment])::before {
+            content: counter(parts) ". ";
+        }
+    }
+}

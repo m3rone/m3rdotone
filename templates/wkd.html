@@ -1,0 +1,119 @@
+
+{%extends 'base-root.html'%}
+{%block title%}WKD Verifier{%endblock%}
+{%block keywords%}wkd, verify, wkd verifier, wkd checker{%endblock%}
+{%block description%}A WKD (Web Key Directory) verifier.{%endblock%}
+{%block head%}
+<link rel="stylesheet" href="/static/css/wkd.css">
+{%endblock%}
+{%block body%}
+<form action="/wkd-verify" method="post">
+    <label id="labelforemail" for="email">Enter your email address to check WKD status</label>
+        <input id="email" required type="email" name="email" placeholder="Email Address">
+    <button type="submit">Query</button>
+</form>
+{% if email %}
+    <p>Results for <code>{{ email }}</code></p>
+{% endif %}
+
+{% if results.advancedpolicy or results.advancedpolicyerror%}
+<h2>Advanced method results</h2>
+<ul>
+
+{% if results.advancedpolicy %}
+    <li>
+        <p class="greentext">You have a working advanced policy</p>
+    </li>
+{% elif not results.advancedpolicy and results.advancedpolicyerror %}
+    <li>
+        <dl>
+            <dt>
+                <p class="redtext">You do not have a working advanced policy:</p>
+            </dt>
+            <dd>
+                <p>{{results.advancedpolicyerror}}</p>
+            </dd>
+        </dl>
+    </li>
+{% endif %}
+
+{% if results.advancedkey %}
+    <li>
+        <p class="greentext">Your key is accessible via advanced method</p>
+    </li>
+{% elif not results.advancedkey and results.advancedkeyerror %}
+    <li>
+        <dl>
+            <dt><p class="redtext">Your key is not accessible via advanced method</p></dt>
+            <dd>{{results.advancedkeyerror}}</dd>
+        </dl>
+    </li>
+{% endif %}
+
+{% if results.advancedheader %}
+    <li>
+        <p class="greentext">The HTTP headers on your advanced key are correct</p>
+    </li>
+{% elif not results.advancedheader and results.advancedheadererror %}
+    <li>
+        <dl>
+            <dt><p class="redtext">The HTTP "Content-Type" headers on your advanced key are not correct. They should be "application/octet-stream" and they are:</p></dt>
+            <dd>{{results.advancedheadererror}}</dd>
+        </dl>
+    </li>
+{% endif %}
+</ul>
+{% endif %}
+
+{% if results.directpolicy or results.directpolicyerror%}
+<h2>Direct method results</h2>
+<ul>
+
+{% if results.directpolicy %}
+    <li>
+        <p class="greentext">You have a working direct policy</p>
+    </li>
+{% elif not results.directpolicy and results.directpolicyerror %}
+    <li>
+        <dl>
+            <dt>
+                <p class="redtext">You do not have a working direct policy:</p>
+            </dt>
+            <dd>
+                <p>{{results.directpolicyerror}}</p>
+            </dd>
+        </dl>
+    </li>
+{% endif %}
+
+
+{% if results.directkey %}
+    <li>
+        <p class="greentext">Your key is accessible via direct method</p>
+    </li>
+{% elif not results.directkey and results.directkeyerror %}
+    <li>
+        <dl>
+            <dt><p class="redtext">Your key is not accessible via direct method</p></dt>
+            <dd>{{results.directkeyerror}}</dd>
+        </dl>
+    </li>
+{% endif %}
+
+{% if results.directheader %}
+    <li>
+        <p class="greentext">The HTTP headers on your direct key are correct</p>
+    </li>
+{% elif not results.directheader and results.directheadererror %}
+    <li>
+        <dl>
+            <dt><p class="redtext">The HTTP "Content-Type" headers on your direct key are not correct. They should be "application/octet-stream" and they are:</p></dt>
+            <dd>{{results.directheadererror}}</dd>
+        </dl>
+    </li>
+{% endif %}
+</ul>
+{% endif %}
+<p>Please keep in mind that this tester currently does not verify whether the key that exists matches with the email address. For more information, visit <a href="https://www.ietf.org/archive/id/draft-koch-openpgp-webkey-service-16.html">WKD RFC</a>.</p>
+<p>See <a href="/privacy">privacy policy</a> to see what happens with your email address (not a whole lot).</p>
+{%endblock%}

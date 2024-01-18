@@ -1,0 +1,157 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  line-height: 30px;
+}
+
+.post {
+  margin-top: 10px;
+  color: #8e8d8d;
+}
+
+.directory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 23rem;
+  margin: auto;
+  justify-content: center;
+}
+.directory__dircard {
+  min-width: 7rem;
+  max-width: fit-content;
+  flex-basis: calc(33.33% - 17rem);
+  position: relative;
+  padding-block: 3rem;
+  transition: all 200ms ease-in-out;
+  color: #d9d9d9;
+}
+.directory__dircard__text {
+  display: block;
+  font-size: 1.17em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+.directory__dircard::before {
+  content: " ";
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 7rem;
+  width: 7rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  opacity: 0.05;
+  transition: all 200ms ease-in-out;
+  z-index: -1;
+  border-radius: 25px;
+}
+.directory__dircard:hover {
+  color: transparent;
+}
+.directory__dircard:hover::before {
+  opacity: 1;
+}
+.directory__dircard:nth-child(1)::before {
+  background-image: url(/static/media/index/codeberg.webp);
+}
+.directory__dircard:nth-child(1):hover::before {
+  box-shadow: 0px 3px 43px -6px #2285d1;
+}
+.directory__dircard:nth-child(2)::before {
+  background-image: url(/static/media/index/blog.webp);
+}
+.directory__dircard:nth-child(2):hover::before {
+  box-shadow: 0px 3px 43px -6px rgb(255, 255, 255);
+}
+.directory__dircard:nth-child(3)::before {
+  background-image: url(/static/media/index/github.webp);
+}
+.directory__dircard:nth-child(3):hover::before {
+  box-shadow: 0px 3px 43px -6px black;
+}
+.directory__dircard:nth-child(4)::before {
+  background-image: url(/static/media/index/services.webp);
+}
+.directory__dircard:nth-child(4):hover::before {
+  box-shadow: 0px 3px 43px -6px #929292;
+}
+.directory__dircard:nth-child(5)::before {
+  background-image: url(/static/media/index/contact.webp);
+}
+.directory__dircard:nth-child(5):hover::before {
+  box-shadow: 0px 3px 43px -6px #f44336;
+}
+.directory__dircard:nth-child(6)::before {
+  background-image: url(/static/media/index/donate.webp);
+}
+.directory__dircard:nth-child(6):hover::before {
+  box-shadow: 0px 3px 43px -6px #f7931a;
+}
+@media (prefers-color-scheme: light) {
+  .directory__dircard {
+    color: #262626;
+  }
+  .directory__dircard:nth-child(1)::before {
+    background-image: url(/static/media/index/codeberg-light.webp);
+  }
+  .directory__dircard:nth-child(1):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+  .directory__dircard:nth-child(2)::before {
+    background-image: url(/static/media/index/blog-light.webp);
+  }
+  .directory__dircard:nth-child(2):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+  .directory__dircard:nth-child(3)::before {
+    background-image: url(/static/media/index/github-light.webp);
+  }
+  .directory__dircard:nth-child(3):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+  .directory__dircard:nth-child(4)::before {
+    background-image: url(/static/media/index/services-light.webp);
+  }
+  .directory__dircard:nth-child(4):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+  .directory__dircard:nth-child(5)::before {
+    background-image: url(/static/media/index/contact-light.webp);
+  }
+  .directory__dircard:nth-child(5):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+  .directory__dircard:nth-child(6)::before {
+    background-image: url(/static/media/index/donate-light.webp);
+  }
+  .directory__dircard:nth-child(6):hover::before {
+    box-shadow: 0px 3px 43px -6px transparent;
+  }
+}
+
+.whoami {
+  width: min(78ch, 90%);
+  margin-inline: auto;
+  margin-block: 2rem;
+}
+
+.indexfooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  flex-wrap: wrap;
+}
+
+.postlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,34 @@
+# perfect fourth or major third
+fonts:
+  - 'system-ui'
+  - headings:
+    - Roboto Slab
+    - Roboto Serif
+    - Song Myung
+    - PT Serif
+    - Noto Serif Khmer
+    - Hahmlet
+    - Amiri Quran
+    - Noto Serif Kannada
+
+  - body:
+    - Roboto
+    - Nokora
+    - Noto Sans Syriac Eastern
+    - Noto Sans Sharada
+    - Noto Sans Pahawh Hmong
+    - Noto Sans Buhid
+    - Anuphan
+    - Comme
+    - Noto Sans SC / Linear A
+    - Noto Sans Bhaiksuki
+    - Noto Sans Kannada
+
+colors:
+  dark: # TODO choose between this dark or bg #0a0a0a
+   text: '#d9d9d9'
+   bg: '#1a1a1a'
+
+  light:
+   text: '#262626'
+   bg: '#f5f5f5'

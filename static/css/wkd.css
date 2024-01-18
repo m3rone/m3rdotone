@@ -1,0 +1,16 @@
+.greentext {
+  color: rgba(47, 255, 0, 0.6);
+}
+
+.redtext {
+  color: rgba(255, 0, 21, 0.6);
+  word-wrap: break-word;
+}
+
+dd {
+  word-wrap: break-word;
+}
+
+#labelforemail {
+  display: block;
+}
