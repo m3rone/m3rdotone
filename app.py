@@ -1,6 +1,6 @@
 from flask import Flask, abort, make_response, render_template, request, send_file
 import os
-import modules.wkdverifier as wkdv
+# import modules.wkdverifier as wkdv # TODO: ZBASE32 IS BROKEN ON PY3.13
 import threading as thr
 from time import sleep
 import logging
@@ -70,21 +70,21 @@ def create_app():
             abort(404)
 
     # @app.route("/wkd-verify", methods=['GET', 'POST'])
-    def wkd():
-        results = None
-        email = None
-        if request.method == 'POST':
-            email = request.form['email']
-            if "@" not in email:
-                abort(403)
-            try:
-                results = wkdv.fullverify(email)
-                logging.info(f"Running wkdv.fullverify for email address {email}")
-            except Exception as error:
-                results = "error occured"
-                ipaddress = request.remote_addr
-                logging.error(f"Error occured while using wkdv.fullverify. IP: {ipaddress}, Email: {email} and error: {error}.")
-        return render_template("wkd.html", results = results, email = email)
+    # def wkd():
+    #     results = None
+    #     email = None
+    #     if request.method == 'POST':
+    #         email = request.form['email']
+    #         if "@" not in email:
+    #             abort(403)
+    #         try:
+    #             results = wkdv.fullverify(email)
+    #             logging.info(f"Running wkdv.fullverify for email address {email}")
+    #         except Exception as error:
+    #             results = "error occured"
+    #             ipaddress = request.remote_addr
+    #             logging.error(f"Error occured while using wkdv.fullverify. IP: {ipaddress}, Email: {email} and error: {error}.")
+    #     return render_template("wkd.html", results = results, email = email)
 
     @app.route("/<path:staticfile>")
     def staticfolder(staticfile):
@@ -108,7 +108,7 @@ def create_app():
     def forbidden403(e):
         return make_response(render_template("403.html"), 403)
 
-    # app.run(debug=True, host='0.0.0.0')
+    #app.run(debug=True, host='0.0.0.0')
     return app
 
-# create_app()
+#create_app()

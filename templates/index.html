@@ -15,18 +15,32 @@
     <body>
         <main>
             <h1>Just a Personal Site</h1>
-            <p>My directory:</p>
+            <p>Don't be shy:</p>
             <nav class="directory">
-                <a href="https://codeberg.org/m3r" class="directory__dircard"><span class="directory__dircard__text">Codeberg</span></a>
-                <a href="/select" class="directory__dircard"><span class="directory__dircard__text">Blog</span></a>
                 <a href="https://github.com/m3rone" class="directory__dircard"><span class="directory__dircard__text">Github</span></a>
+                <a href="/select" class="directory__dircard"><span class="directory__dircard__text">Blog</span></a>
+                <a href="https://codeberg.org/m3r" class="directory__dircard"><span class="directory__dircard__text">Codeberg</span></a>
                 <a href="/services" class="directory__dircard"><span class="directory__dircard__text">Services</span></a>
                 <a href="/contact" class="directory__dircard"><span class="directory__dircard__text">Contact</span></a>
                 <a href="/donate" class="directory__dircard"><span class="directory__dircard__text">Donate</span></a>
             </nav>
-            <section class="whoami" aria-label="about me snippet">
-                <p> <b>[johndoe@artix]~% whoami</b></p>
-                <p> Salutations, tis I, m3r. I'm an economics major and programmer from <span class="easteregg" title="🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷 AS BAYRAKLARI AS AS AS 🇹🇷🇹🇷🇹🇷🇹🇷🇹🇷">Turkey</span> that enjoys full stack web development (and doing my best with design) and software development that consist of primarily API wrappers, scrapers, and tools. Other than that some unrelated hobbies like watches (Seiko gang), woodworking, everything Linux, reading depressing inflation news, and <span class="easteregg" title="well ok if you really insist on knowing the rest: I like knitting, making music, CAD stuff, hardware hacking, arduino stuff, self hosting, all that cool stuff. I just try to be jack of all trades, master of at least some lol">some more</span>.</p>
+            <section class="whoami" aria-label="a snippet about me">
+                <div class="whoami__termbar">
+                    <img class="whoami__termbar__consoleicon" src="/static/icons/Konsole_icon_breeze.svg" alt="konsole icon">
+                    <p>~:zsh — Konsole</p>
+                    <div class="whoami__termbar__buttons">
+                        <div class="whoami__termbar__buttons--down"></div>
+                        <div class="whoami__termbar__buttons--fullscreen"></div>
+                        <label class="whoami__termbar__buttons--close" for="whoamiclosebox">
+                            <div class="whoami__termbar__buttons--close"></div>
+                            <input type="checkbox" name="" id="whoamiclosebox" autocomplete="off">
+                        </label>
+                    </div>
+                </div>
+                <p class="whoami__query"> <span class="whoami__name">johndoe</span>@<span class="whoami__name">artix</span> <span class="whoami__pwd">[~]</span> % <span class="whoami__validcmd">whoami</span></p>
+                <p> Hi. I'm an economics major, Linux sysadmin, and programmer from Turkey that enjoys full stack web development with SvelteKit, Flask, Django and alike and software development that consist of primarily API wrappers, scrapers, and tools.</p>
+                    
+                <p>Other than that some unrelated hobbies like watches, woodworking, everything Linux, reading depressing inflation news, and some more.</p>
             </section>
         </main>
         <footer class="indexfooter"><a href="/privacy">Privacy Policy</a> <a href="/disclaimer">Disclaimer</a> <a href="/contact">Contact</a></footer>

@@ -94,6 +94,13 @@
   font-weight: 900;
   src: url("/static/fonts/roboto/roboto-v30-latin-900italic.woff2") format("woff2");
 }
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/static/fonts/jetbrainsmono/jetbrains-mono-v20-latin-regular.woff2") format("woff2");
+}
 body {
   background-color: #1a1a1a;
   color: #d9d9d9;
@@ -108,18 +115,6 @@ code {
   color: #189e40;
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: #f5f5f5;
-    color: #262626;
-  }
-  a {
-    color: #0051ff;
-  }
-  code {
-    color: #167a34;
-  }
-}
 * {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   box-sizing: border-box;

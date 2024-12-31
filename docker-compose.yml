@@ -1,10 +1,12 @@
 services:
   website:
-    image: "ghcr.io/m3rone/m3r_site:latest"
+    container_name: website
+    image: "ghcr.io/m3rone/m3rdotone:latest"
     ports:
       - "6767:6767"
     networks:
       - m3r
+    restart: unless-stopped
 
 networks:
   m3r:

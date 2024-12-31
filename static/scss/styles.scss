@@ -75,16 +75,16 @@ h1 {
             }
         }
 
-        &:nth-child(1) { // Codeberg
-            @include dir('/static/media/index/codeberg.webp', #2285d1)
+        &:nth-child(1) { // Github
+            @include dir('/static/media/index/github.webp', black)
         }
 
         &:nth-child(2) { // Blog
             @include dir('/static/media/index/blog.webp', rgba(255,255,255,1))
         }
 
-        &:nth-child(3) { // Github
-            @include dir('/static/media/index/github.webp', black)
+        &:nth-child(3) { // Codeberg
+            @include dir('/static/media/index/codeberg.webp', #2285d1)
         }
 
         &:nth-child(4) { // Service
@@ -136,6 +136,95 @@ h1 {
     width: min(78ch, 90%);
     margin-inline: auto;
     margin-block: 2rem;
+    text-align: left;
+    //terminal
+    background-color: #232627;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 17px 27px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 17px 27px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 17px 27px -5px rgba(0,0,0,0.75);
+    border: #5a5e62 1px solid;
+
+    &:has(#whoamiclosebox:checked) {
+        display: none;
+    }
+
+    & * {
+        font-family: JetBrains Mono, monospace;
+        font-size: 0.9rem;
+    }
+
+    & > *:not(.whoami__termbar) {
+        margin-inline: 0.5rem;
+    }
+// I realize this whole terminal is kinda hacky but I didnt think about it while making it
+    & > p:last-child {
+        margin-block-end: 0;
+        padding-block-end: 0.5rem;
+    }
+
+    &__termbar {
+        height: 2rem;
+        background-color: #31363b;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: #5a5e62 1px solid;
+
+        &__consoleicon {
+            max-height: 80%;
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            & > * {
+                height: 13.608px; //
+                aspect-ratio: 1 / 1;
+                border-radius: 50%;
+            }
+
+            &--down {
+                background-color: #78b159;
+            }
+
+            &--fullscreen {
+                background-color: #fdcb58;
+            }
+
+            &--close {
+                background-color: #dd2e44;
+                cursor: pointer;
+
+                & > input {
+                    display: none;
+                }
+            }
+        }
+
+        & > * {
+            margin-inline: 0.5em;
+        }
+    }
+
+    &__query {
+        margin-top: 0.5rem;
+    }
+
+    &__validcmd {
+        color: #12c917
+    }
+
+    &__pwd {
+        color: #5c5dcf
+    }
+
+    &__name {
+        color: #028382
+    }
 }
 
 .indexfooter {

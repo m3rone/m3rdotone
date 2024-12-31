@@ -4,3 +4,4 @@ __pycache__/
 .vscode
 static/scss
 .git
+.env

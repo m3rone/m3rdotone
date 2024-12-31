@@ -58,10 +58,10 @@ h1 {
   opacity: 1;
 }
 .directory__dircard:nth-child(1)::before {
-  background-image: url(/static/media/index/codeberg.webp);
+  background-image: url(/static/media/index/github.webp);
 }
 .directory__dircard:nth-child(1):hover::before {
-  box-shadow: 0px 3px 43px -6px #2285d1;
+  box-shadow: 0px 3px 43px -6px black;
 }
 .directory__dircard:nth-child(2)::before {
   background-image: url(/static/media/index/blog.webp);
@@ -70,10 +70,10 @@ h1 {
   box-shadow: 0px 3px 43px -6px rgb(255, 255, 255);
 }
 .directory__dircard:nth-child(3)::before {
-  background-image: url(/static/media/index/github.webp);
+  background-image: url(/static/media/index/codeberg.webp);
 }
 .directory__dircard:nth-child(3):hover::before {
-  box-shadow: 0px 3px 43px -6px black;
+  box-shadow: 0px 3px 43px -6px #2285d1;
 }
 .directory__dircard:nth-child(4)::before {
   background-image: url(/static/media/index/services.webp);
@@ -93,52 +93,82 @@ h1 {
 .directory__dircard:nth-child(6):hover::before {
   box-shadow: 0px 3px 43px -6px #f7931a;
 }
-@media (prefers-color-scheme: light) {
-  .directory__dircard {
-    color: #262626;
-  }
-  .directory__dircard:nth-child(1)::before {
-    background-image: url(/static/media/index/codeberg-light.webp);
-  }
-  .directory__dircard:nth-child(1):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-  .directory__dircard:nth-child(2)::before {
-    background-image: url(/static/media/index/blog-light.webp);
-  }
-  .directory__dircard:nth-child(2):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-  .directory__dircard:nth-child(3)::before {
-    background-image: url(/static/media/index/github-light.webp);
-  }
-  .directory__dircard:nth-child(3):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-  .directory__dircard:nth-child(4)::before {
-    background-image: url(/static/media/index/services-light.webp);
-  }
-  .directory__dircard:nth-child(4):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-  .directory__dircard:nth-child(5)::before {
-    background-image: url(/static/media/index/contact-light.webp);
-  }
-  .directory__dircard:nth-child(5):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-  .directory__dircard:nth-child(6)::before {
-    background-image: url(/static/media/index/donate-light.webp);
-  }
-  .directory__dircard:nth-child(6):hover::before {
-    box-shadow: 0px 3px 43px -6px transparent;
-  }
-}
 
 .whoami {
   width: min(78ch, 90%);
   margin-inline: auto;
   margin-block: 2rem;
+  text-align: left;
+  background-color: #232627;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 17px 27px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 17px 27px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 17px 27px -5px rgba(0, 0, 0, 0.75);
+  border: #5a5e62 1px solid;
+}
+.whoami:has(#whoamiclosebox:checked) {
+  display: none;
+}
+.whoami * {
+  font-family: JetBrains Mono, monospace;
+  font-size: 0.9rem;
+}
+.whoami > *:not(.whoami__termbar) {
+  margin-inline: 0.5rem;
+}
+.whoami > p:last-child {
+  margin-block-end: 0;
+  padding-block-end: 0.5rem;
+}
+.whoami__termbar {
+  height: 2rem;
+  background-color: #31363b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #5a5e62 1px solid;
+}
+.whoami__termbar__consoleicon {
+  max-height: 80%;
+}
+.whoami__termbar__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.whoami__termbar__buttons > * {
+  height: 13.608px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+.whoami__termbar__buttons--down {
+  background-color: #78b159;
+}
+.whoami__termbar__buttons--fullscreen {
+  background-color: #fdcb58;
+}
+.whoami__termbar__buttons--close {
+  background-color: #dd2e44;
+  cursor: pointer;
+}
+.whoami__termbar__buttons--close > input {
+  display: none;
+}
+.whoami__termbar > * {
+  margin-inline: 0.5em;
+}
+.whoami__query {
+  margin-top: 0.5rem;
+}
+.whoami__validcmd {
+  color: #12c917;
+}
+.whoami__pwd {
+  color: #5c5dcf;
+}
+.whoami__name {
+  color: #028382;
 }
 
 .indexfooter {
