@@ -9,8 +9,6 @@ RUN python3 -m ensurepip
 COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 
-RUN apk add neovim
-
 EXPOSE 6767
 
 COPY . . 
